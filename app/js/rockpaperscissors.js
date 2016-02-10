@@ -37,7 +37,7 @@ function getComputerMove(move) {
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
     if (move === undefined || null){
-        move = getInput();
+        move = randomPlay();
     }
     return move;
 }
