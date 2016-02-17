@@ -4,7 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.\n")
     return prompt();
 }
 function randomPlay() {
@@ -65,12 +65,49 @@ function getWinner(playerMove,computerMove) {
     return winner;
 }
 
+
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
+    
+    var round = 1;
+    while(playerWins < 5 && computerWins < 5){
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove();
+
+        var tempWin = getWinner(playerMove, computerMove);
+        console.log("*******Round" + round + "******\n The player chose " + playerMove + ". The computer played " + computerMove + ". ")
+
+        if (tempWin === "player"){
+            console.log("The player wins this round.\n");
+            playerWins += 1;
+            
+            round++;
+            console.log("The current score is Player: " + playerWins + " Computer: " + computerWins + "\n");
+        } else if (tempWin === "computer"){
+            console.log("The computer wins this round.\n");
+            computerWins += 1;
+            
+            round++;
+            console.log("The current score is Player: " + playerWins + " Computer: " + computerWins + "\n");
+        } else if (tempWin === "tie"){
+            console.log("This round ended in a tie.\n")
+            round++;
+            console.log("The current score is Player: " + playerWins + " Computer: " + computerWins + "\n");
+        }
+    }
+    if (playerWins || computerWins){
+        if (playerWins > computerWins){
+            console.log("The final score is Player: " + playerWins + " Computer: " + computerWins + "\n");
+            console.log("The player wins the game.  Humanity is saved!");
+        } else if (computerWins > playerWins){
+            console.log("The final score is Player: " + playerWins + " Computer: " + computerWins + "\n");
+            console.log("The computer wins the game.  You were humanity's last hope.")
+        }
+    }
     /* YOUR CODE HERE */
-    return [playerWins, computerWins];
+    
 }
 
